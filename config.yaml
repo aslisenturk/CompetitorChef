@@ -1,0 +1,221 @@
+embedding:
+  azure_endpoint : "https://openainlppg.openai.azure.com/"
+  api_key : "5364d6db77da4a81809a74be59ed1a0e"
+  model : "embeddings"
+  api_version: "2023-07-01-preview"
+
+completion:
+  azure_endpoint : "https://nlpeastus2.openai.azure.com/"
+  api_version : "2023-07-01-preview"
+  api_key : "f6d74aa4e897478395c366db5cb2f72b"
+  # model : "exai"
+  model : "gpt4-1106"
+  # system : {
+  #   "role": "system",
+  #   "content": "Restoran1 listesindeki kategorileri, Restoran2 listesinden eşdeğer ve benzer kategorilerle eşleştir. 
+  #               Sadece Restoran1 listesindeki tüm kategoriler için en az bir eşleşme olsun.
+  #               Çıktı formatın: Restoran1 listesindeki kategori - Restoran2 listesinden eşlenen tüm kategorileri sırala."
+  # }
+  system : {
+  "role": "system",
+  "content": "Restoran1 listesindeki kategorileri, Restoran2 listesinden eşdeğer ve benzer kategorilerle eşleştir.
+              Restoran1'deki tüm kategoriler için birden fazla eşleşme olanlarda hepsini listele. 
+              Çıktı formatı ve örnek: 
+              başlangiç - yan ürünler;
+              ocağimizdan - makarna ve risotto; 
+              paylaşimlik tabaklar - başlangıçlar, yan ürünler; 
+              sandvi̇ç - i̇ki dilim arasında, paniniler;
+              di̇van klasi̇kleri̇ - ana yemek"
+  }
+
+database:
+  DB_USER: "daas_user"
+  DB_PASSWORD: "daas123!"
+  DB_NAME: "daas_db"
+  DB_PATH: "ec2-34-206-181-139.compute-1.amazonaws.com"
+  DB_PORT: 8886
+
+table:
+  columns: ["date", "province", "district", "sector_id", "sector", "brand", "category_id", "category", "product_id", "product", "product_detail", "quantity", "quantity_type", "extra_category", "extra_name", "extra_price", "price", "source"]
+  
+  relevant_columns : ["sector", "category", "product", "product_detail"]
+
+  divan_tables: ["divan_bistro_lotus", "divan_brasserie_fuaye", "divan_brasserie_kalamis", "divan_pub_atasehir", "divan_pub_bodrum", "divan_pub_citys_istanbul"] 
+
+  other_tables: ["beyaz_firin", "mezzaluna_istinye", "populist_bomonti", "serafina", "ulus29", "lacivert", "vakko_bistrot", "vakko_pastane"]
+
+  more_tables: ["caribou", "nero", "starbucks"]
+
+  divan_restaurants : ["Divan Bistro Lotus", "Divan Brasserie Fuaye", "Divan Brasserie Kalamış", "Divan Pub Ataşehir", "Divan Pub Bodrum", "Divan Pub City's İstanbul"]
+  
+  divan_dict : {"Divan Bistro Lotus" : "divan_bistro_lotus", "Divan Brasserie Fuaye" : "divan_brasserie_fuaye", "Divan Brasserie Kalamış" : "divan_brasserie_kalamis", 
+                "Divan Pub Ataşehir" : "divan_pub_atasehir", "Divan Pub Bodrum" : "divan_pub_bodrum", "Divan Pub City's İstanbul" : "divan_pub_citys_istanbul"}
+
+  divan_bistro_lotus_category :  ['TÜMÜ', 'ÇORBA', 'SALATA', 'BAŞLANGIÇ', 'YENİ VEGANLAR', 'OCAĞIMIZDAN', 'TAŞ FIRINIMIZDAN', 'PAYLAŞIMLIK TABAKLAR', 'DİVAN KLASİKLERİ', 'IZGARAMIZDAN', 'TATLI', 'KOKTEYLLER', 'BEYAZ', 'ROZE & BLUSH', 'KIRMIZI', 'SANDVİÇ', 'VİSKİ', 'BİRA', 'VOTKA', 'CİN', 'TEKİLA & MEZKAL', 'ROM', 'DİJESTİF', 'RAKI', 'KÖPÜKLÜ', 'APERİTİF', 'BRENDİ & KONYAK', 'LİKÖR', 'SOĞUK', 'SICAK', 'KAHVALTI MENÜSÜ'] 
+
+  divan_brasserie_fuaye_category :  ['TÜMÜ', 'BAŞLANGIÇLAR', 'ÇORBA', 'TAŞ FIRINIMIZDAN', 'PAYLAŞIMLIK TABAKLAR', 'DİVAN KLASİKLERİ', 'IZGARAMIZDAN', 'SALATALAR', 'HAMBURGER', 'TATLILAR', 'SOĞUK İÇECEKLER', 'SICAK İÇECEKLER', 'ALKOLLÜ İÇECEKLER', 'ŞARAP', 'BAR SNACK MENÜ', 'FUAYE ÖZEL KOKTEYLLER', 'APERITIF', 'VİSKİ', 'BİRA', 'VOTKA', 'CİN', 'TEKİLA & MEZKAL', 'ROM', 'DİJESTİF', 'KONYAK & BRENDİ', 'RAKI', 'KLASİK KOKTEYLLER', 'DİVAN ÖZEL KOKTEYLLER', 'MOCKTAİL'] 
+
+  divan_brasserie_kalamis_category :  ['TÜMÜ', 'ÇORBA', 'SALATA', 'BAŞLANGIÇ', 'YENİ VEGANLAR', 'OCAĞIMIZDAN', 'TAŞ FIRINIMIZDAN', 'PAYLAŞIMLIK TABAKLAR', 'DİVAN KLASİKLERİ', 'IZGARAMIZDAN', 'TATLI', 'KOKTEYLLER', 'BEYAZ', 'ROZE & BLUSH', 'KIRMIZI', 'SANDVİÇ', 'VİSKİ', 'BİRA', 'VOTKA', 'CİN', 'TEKİLA & MEZKAL', 'ROM', 'DİJESTİF', 'RAKI', 'KÖPÜKLÜ', 'APERİTİF', 'BRENDİ & KONYAK', 'LİKÖR', 'SOĞUK', 'SICAK', 'KAHVALTI MENÜSÜ'] 
+
+  divan_pub_atasehir_category :  ['TÜMÜ', 'KAHVALTILIKLAR', 'ÇORBA', 'SALATA', 'BAŞLANGIÇ', 'OCAĞIMIZDAN', 'TAŞ FIRINIMIZDAN', 'SOKAK LEZZETLERİ', 'IZGARAMIZDAN', 'TATLI', 'APERİTİF', 'VOTKA', 'CİN', 'TEKİLA & MEZKAL', 'RAKI', 'DİJESTİF', 'BRENDİ & KONYAK', 'VİSKİ', 'ROM', 'BİRA', 'LİKÖR', 'DİVAN İMZALI KOKTEYLLER', 'BEYAZ', 'ROZE & BLUSH', 'KIRMIZI', 'VEGAN', 'KOKTEYLLER', 'PAYLAŞIMLIKLAR', 'SOĞUK', 'SICAK', 'TOSTLAR', 'ÇOCUK MENÜSÜ', 'KÖPÜKLÜ', 'ARTIZANAL PEYNİR TABAĞI'] 
+
+  divan_pub_bodrum_category :  ['TÜMÜ', 'SALATA', 'BAŞLANGIÇ', 'OCAĞIMIZDAN', 'SOKAK LEZZETLERİ', 'IZGARAMIZDAN', 'APERİTİF', 'VOTKA', 'CİN', 'TEKİLA & MEZKAL', 'RAKI', 'DİJESTİF', 'BRENDİ & KONYAK', 'VİSKİ', 'ROM', 'BİRA', 'LİKÖR', 'BEYAZ', 'KIRMIZI', 'GÜNÜN ÇORBASI', 'PAYLAŞIMLIK', '48 SAAT DİNLENDİRİLMİŞ EKŞİ MAYALI PİZZALAR', 'VEGAN', 'KADEH ŞARAPLAR', 'İÇECEK', 'TATLI MENÜSÜ', 'KOKTEYLLER', 'ŞAMPANYA & KÖPÜKLÜ', 'PEYNİR TABAĞI', 'ROSE & BLUSH'] 
+
+  divan_pub_citys_istanbul_category :  ['TÜMÜ', 'ÇORBA', 'SALATA', 'BAŞLANGIÇ', 'OCAĞIMIZDAN', 'TAŞ FIRINIMIZDAN', 'SOKAK LEZZETLERİ', 'IZGARAMIZDAN', 'TATLI', 'İÇECEKLER', 'APERİTİF', 'VOTKA', 'CİN', 'TEKİLA & MEZKAL', 'RAKI', 'DİJESTİF', 'BRENDİ & KONYAK', 'VİSKİ', 'ROM', 'BİRA', 'LİKÖR', 'KOKTEYLLER', 'DİVAN İMZALI KOKTEYLLER', 'ŞAMPANYA & PROSECCO & KÖPÜKLÜ', 'BEYAZ', 'ROZE & BLUSH', 'KIRMIZI', 'VEGAN', 'PAYLAŞIMLIKLAR', 'KAHVALTI'] 
+
+category:
+  # categories: {
+  #   'çorba': ['çorbalar'],
+  #   'salata': ['salatalar'],
+  #   'başlangiç': ['başlangiçlar', 'baslangiçlar'],
+  #   'yeni̇ veganlar': ['fit ürünler', 'fit öğünler'],
+  #   'ocağimizdan': ['ana yemekler'],
+  #   'taş firinimizdan': ['taş firin', 'pi̇zzalar', 'pizzalar'],
+  #   'paylaşimlik tabaklar': ['paylaşimliklar', 'ana yemek paylaşimliklar'],
+  #   'di̇van klasi̇kleri̇': ['klasik tercihler'],
+  #   'izgaramizdan': ['ana yemek etler'],
+  #   'tatli': ['tatlilar', 'sütlü tatlilar', 'pastalar', 'tatli & tuzlu kutular', 'tatli kadeh şaraplar'],
+  #   'kokteyller': ['kokteyller', 'klasik kokteyller', 'house kokteyller', 'kokteyl'],
+  #   'beyaz': ['beyaz şaraplar', 'i̇talyan beyaz şaraplar', 'yerli̇ beyaz şaraplar', 'dünya beyaz şaraplar', 'kadeh beyaz şaraplar', 'beyaz türk şaraplari', 'beyaz fransiz şaraplar', 'beyaz i̇talyan şaraplar', 'diğer beyaz şaraplar'],
+  #   'roze & blush': ['roze şaraplar', 'kadeh roze şaraplar', 'roze şaraplar', 'pembe şaraplar'],
+  #   'kirmizi': ['kirmizi şaraplar', 'i̇talyan kirmizi şaraplar', 'yerli̇ kirmizi şaraplar', 'dünya kirmizi şaraplar', 'kadeh kirmizi şaraplar', 'kirmizi türk şaraplari', 'kirmizi i̇talyan şaraplar', 'kirmizi fransiz şaraplar'],
+  #   'sandvi̇ç': ['soğuk sandviçler', 'artizan sandviçler', 'sandviçler', 'mini sandviçler'],
+  #   'vi̇ski̇': ['viskiler', 'vi̇ski̇ standart'],
+  #   'bi̇ra': ['bi̇ralar', 'torch biralar', 'bira'],
+  #   'votka': ['votka', 'votkalar', 'votka standart'],
+  #   'ci̇n': ['cin', 'ci̇nler'],
+  #   'teki̇la & mezkal': ['teki̇lalar'],
+  #   'rom': ['rom', 'rum'],
+  #   'di̇jesti̇f': ['likor', 'likör'],
+  #   'raki': ['70lik rakilar', '35lik rakilar', '20lik rakilar', 'duble raki', 'tek rakilar'],
+  #   'köpüklü': ['köpüklü şarap', 'köpüklü şaraplar', 'şampanya ve köpüklü şaraplar'],
+  #   'aperi̇ti̇f': ['aperatifler (eğer varsa restoran2 listesinde)'],
+  #   'brendi̇ & konyak': ['konyak', 'konyaklar'],
+  #   'li̇kör': ['likör', 'likor'],
+  #   'soğuk': ['soğuk kahveler', 'soğuk i̇çecekler', 'klasik soğuk kahveler'],
+  #   'sicak': ['sicak i̇çecekler', 'sicak i̇çecekler'],
+  #   'kahvalti menüsü': ['kahvaltiliklar', 'kahvaltiliklar & sandviçler'],
+  #   'çorba günleri': ["çorbalar"]
+  #   } 
+ 
+
+  categories : {
+    'çorba': ['çorbalar'],
+    'salata': ['salatalar', 'yeşillikler', 'diğer lezzetler'],
+    'başlangiç': ['yan ürünler', 'başlangiçlar', 'paylaşımlıklar', 'başlangıçlar', 'baslangıçlar', 
+      'd.ream şef kolektifi', 'ketojenik', 'diğer lezzetler'],
+    'yeni̇ veganlar': ['yan ürünler', 'başlangiçlar', 'paylaşımlıklar', 'başlangıçlar', 'baslangıçlar', 'diğer lezzetler', 
+      'vegan tüketime uygun lezzetler','fit ürünler', 'fit öğünler', 'karabuğdayli ekmek i̇le hazirlanan lezzetler'],
+    'ocağimizdan': ['makarnalar','makarna ve risotto', 'makarna ve ristto'],
+    'taş firinimizdan': ['pi̇zzalar', 'pizzalar', 'taş firin', 'taş fırın'],
+    'paylaşimlik tabaklar': ['başlangiçlar', 'paylaşimliklar', 'ana yemek paylaşimliklar'],
+    'di̇van klasi̇kleri̇': ['ana yemek', 'ana yemekler', 'ana yemek etler', 'ana yemek baliklar', 'd.ream şef kolektifi', 
+      'klasik tercihler'],
+    'izgaramizdan': ['d.ream şef kolektifi', 'ana yemek', 'ana yemek etler', 'ana yemekler', 'ana yemek baliklar'],
+    'tatli': [ 'sütlü tatlılar', 'tatlilar', 'tatlılar', 'pastalar', 'sütlü tatlilar', 'kek & çörekler', 'kekler', 
+      'pasta & kekler', 'tek kişilik pastalar', 'mini pastalar'],
+    'kokteyller': ['kokteyl', 'kokteyller', 'klasik kokteyller', 'house kokteyller'],
+    'beyaz': ['i̇talyan beyaz şaraplar', 'yerli̇ beyaz şaraplar', 'dünya beyaz şaraplar', 'kadeh beyaz şaraplar', 
+      'beyaz şaraplar', 'kadeh şaraplar', 'tatlı kadeh şaraplar', 'beyaz kadeh şaraplar', 'beyaz türk şarapları', 
+      'beyaz fransız şaraplar', 'beyaz i̇talyan şaraplar', 'diğer beyaz şaraplar', 'beyaz fransiz şaraplar', 
+      'beyaz i̇talyan şaraplar', 'beyaz türk şaraplari'],
+    'roze & blush': ['pembe şaraplar', 'roze şaraplar',  'kadeh roze şaraplar'],
+    'kirmizi': ['i̇talyan kirmizi şaraplar', 'yerli̇ kirmizi şaraplar', 'dünya kirmizi şaraplar', 'kadeh şaraplar',
+      'kadeh kirmizi şaraplar', 'kırmızı şaraplar', 'kırmızı kadeh şaraplar', 'tatlı kadeh şaraplar',
+     'kırmızı türk şarapları', 'kırmızı i̇talyan şaraplar', 'kırmızı fransız şaraplar', 'kirmizi şaraplar', 
+     'i̇talyan kirmizi şaraplar', 'kirmizi i̇talyan şaraplar', 'kirmizi fransiz şaraplar', 'kirmizi türk şaraplari'],
+    'sandvi̇ç': ['soğuk sandviçler', 'i̇ki dilim arasinda', 'kahvaltiliklar & sandviçler', 'paniniler', 
+      'artizan sandviçler', 'klasik tostlar', 'artizan tostlar', 'sandviçler', 'mini sandviçler'],
+    'vi̇ski̇': ['viski', 'viskiler', 'vi̇ski̇ standart'],
+    'bi̇ra': ['bi̇ralar', 'bira', 'torch biralar'],
+    'votka': ['vodka', 'votka', 'votkalar', 'votka standart'],
+    'ci̇n': ['gin', 'cin', 'ci̇nler'],
+    'teki̇la & mezkal': ['tekila', 'teki̇lalar'],
+    'rom': ['rum', 'rom'],
+    'di̇jesti̇f': ['konyak', 'konyaklar', 'likor', 'likör'],
+    'raki': ['70lik rakılar', '35lik rakılar', '20lik rakılar', 'duble rakı', 'tek rakılar',],
+    'köpüklü': ['köpüklü şarap', 'köpüklü şaraplar', 'i̇thal şi̇şe şampanya','şampanya ve köpüklü şaraplar'],
+    'aperi̇ti̇f': ['vermut', 'kokteyl', 'kokteyller', 'klasik kokteyller', 'house kokteyller'],
+    'brendi̇ & konyak': ['konyak', 'konyaklar'],
+    'li̇kör': ['likor', 'likör'],
+    'soğuk': ['soğuk kahveler', 'i̇çecekler', 'alkolsüz i̇çecekler', 'meşrubatlar','cooler & blended i̇çecekler', 
+      'şişe i̇çecekler', 'klasik soğuk kahveler', 'özel buzlu i̇çecekler', 'şişelenmiş i̇çecekler', 
+      'frappuccino karışım i̇çecekler - krema bazlı frappuccino', 'sıcak / buzlu çaylar - teavana tea latte',
+      'frappuccino karışım i̇çecekler - kahve bazlı frappuccino'],
+    'sicak': ['sıcak i̇çecekler', 'i̇çecekler', 'kahveler', 'sicak i̇çecekler', 'klasik sıcak i̇çecekler', 
+      'özel sıcak i̇çecekler', 'kahveler',  'çaylar', 'filtre kahveler', 'espressolu i̇çecekler - latte', 
+      'espressolu i̇çecekler - americano', 'espressolu i̇çecekler - mocha', 'espressolu i̇çecekler - cappuccino',  
+      'espressolu i̇çecekler - macchiato', 'sıcak çikolatalar', 'sıcak / buzlu çaylar - teavana tea latte', 
+      'espressolu i̇çecekler - doubleshot espresso'],
+    'kahvalti menüsü': ['kahvaltılıklar', 'yumurtalar', 'kahvaltılıklar & sandviçler', 'kahvaltiliklar', 
+      'kahvaltiliklar & sandviçler', 'artizan sandviçler', 'artizan tostlar', 'karabuğdaylı ekmek i̇le tostlar', 
+      'karabuğdaylı ekmek i̇le hazırlanan lezzetler', 'tostlar', 'soğuk sandviçler', 'paniniler', 'klasik tostlar', 
+      'mini sandviçler', 'sandviçler', 'fit ürünler', 'fit öğünler', 'atıştırmalıklar', 'salatalar & yoğurtlar', ],
+    'çorba günleri': ['çorbalar']
+    }
+
+  # categories : {
+  #   'çorba': ['çorbalar', 'çorba günleri'], 
+  #   'salata': ['salatalar'], 
+  #   'başlangiç': ['başlangiçlar'], 
+  #   'yeni̇ veganlar': ['vegan'], 
+  #   'ocağimizdan': ['ocaktan çikanlar', 'taş firindan'], 
+  #   'taş firinimizdan': ['taş firindan'], 
+  #   'paylaşimlik tabaklar': ['paylaşimliklar'], 
+  #   'di̇van klasi̇kleri̇': ['di̇van özel kokteyller'], 
+  #   'izgaramizdan': ['izgaramizdan'], 
+  #   'tatli': ['tatlilar', 'tatli menüsü'], 
+  #   'kokteyller': ['kokteyller', 'di̇van özel kokteyller', 'divan i̇mzali kokteyller'], 
+  #   'beyaz': ['beyaz şaraplar', 'beyaz i̇talyan şaraplar', 'yerli̇ beyaz şaraplar'], 
+  #   'roze & blush': ['roze şaraplar', 'kadeh roze şaraplar'], 
+  #   'kirmizi': ['kirmizi şaraplar', 'dünya kirmizi şaraplar', 'yerli̇ kirmizi şaraplar'], 
+  #   'sandvi̇ç': ['soğuk sandviçler'], 'vi̇ski̇': ['viski', 'viskiler', 'viski standard'], 
+  #   'bi̇ra': ['bira', 'krikkraklar', 'torch biralar'], 
+  #   'votka': ['votka', 'votka standard'], 
+  #   'ci̇n': ['cin', 'cinler'], 
+  #   'teki̇la & mezkal': ['teki̇lalar'], 
+  #   'rom': ['rom', 'rom'], 
+  #   'di̇jesti̇f': ['dijestif'], 
+  #   'raki': ['raki'], 
+  #   'köpüklü': ['köpüklü şarap', 'köpüklü şaraplar'], 
+  #   'aperi̇ti̇f': ['aperitif'], 
+  #   'brendi̇ & konyak': ['brendi̇ & konyak'], 
+  #   'li̇kör': ['likor'], 
+  #   'soğuk': ['soğuk i̇çecekler', 'klasik soğuk kahveler', 'özel buzlu i̇çecekler'], 
+  #   'sicak': ['sicak i̇çecekler', 'sicak sicaklar'], 
+  #   'kahvalti menüsü': ['kahvalti', 'kahvaltiliklar'], 
+  #   'çorba günleri': ['çorbalar', 'çorba günleri'], 
+  #   'başlangiçlar': ['başlangiçlar'], 
+  #   'salatalar': ['salatalar'], 
+  #   'hamburger': ['sandvi̇ç', 'hamburgerler'], 
+  #   'tatlilar': ['tatlilar', 'tatlilar'], 
+  #   'soğuk i̇çecekler': ['soğuk i̇çecekler', 'klasik soğuk kahveler', 'özel buzlu i̇çecekler'], 
+  #   'sicak i̇çecekler': ['sicak i̇çecekler', 'sicak sicaklar'], 
+  #   'alkollü i̇çecekler': ['alkolsüz i̇çecekler', 'alkollü içecekler'], 
+  #   'şarap': ['şarap', 'beyaz şaraplar', 'kirmizi şaraplar', 'roze şaraplar', 'köpüklü şaraplar'], 
+  #   'bar snack menü': ['atiştirmaliklar', 'snack menü'], 
+  #   'fuaye özel kokteyller': ['fuaye özel kokteyller'], 
+  #   'aperitif': ['aperitif', 'klasik kokteyller', 'house kokteyller'], 
+  #   'konyak & brendi̇': ['brendi̇ & konyak'], 
+  #   'klasi̇k kokteyller': ['klasik kokteyller'], 
+  #   'di̇van özel kokteyller': ['di̇van özel kokteyller'], 
+  #   'mocktai̇l': ['mocktai̇l'], 
+  #   'kahvaltiliklar': ['kahvalti menüsü', 'kahvaltilik ürünler'], 
+  #   'sokak lezzetleri̇': ['sokak lezzetleri̇'], 
+  #   'tostlar': ['tostlar', 'klasik tostlar'], 
+  #   'çocuk menüsü': ['çocuklar i̇çin'], 
+  #   'artizanal peynir tabaği': ['artizanal peynir tabaği'], 
+  #   'günün çorbasi': ['günün çorbasi'], 
+  #   'paylaşimlik': ['paylaşimlik tabaklar', 'paylaşimliklar'], 
+  #   '48 saat di̇nlendi̇ri̇lmi̇ş ekşi̇ mayali pi̇zzalar': ['pi̇zzalar'], 
+  #   'kadeh şaraplar': ['kadeh şaraplar'], 
+  #   'i̇çecek': ['i̇çecekler'], 
+  #   'tatli menüsü': ['tatli menüsü', 'tatli & tuzlu kutular'], 
+  #   'şampanya & köpüklü': ['şampanya & köpüklü', 'şampanya ve köpüklü şaraplar'], 
+  #   'peynir tabaği': ['peynir tabaği'], 
+  #   'rose & blush': ['rose & blush', 'roze şaraplar', 'kadeh roze şaraplar'], 
+  #   'i̇çecekler': ['i̇çecekler'], 
+  #   'şampanya & prosecco & köpüklü': ['şampanya & prosecco & köpüklü', 'şampanya ve köpüklü şaraplar'], 
+  #   'kahvalti': ['kahvalti'], 'vegan': ['yeni veganlar', 'vegan'], 
+  #   'paylaşimliklar': ['paylaşimlik tabaklar', 'paylaşimliklar'], 
+  #   'soğuk': ['soğuk i̇çecekler', 'klasik soğuk kahveler', 'özel buzlu i̇çecekler']}
